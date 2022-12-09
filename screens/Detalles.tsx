@@ -1,11 +1,11 @@
 import React from "react";
-import {  Text, View } from "react-native";
+import {  Text, View, ScrollView } from "react-native";
 import Nav from "../components/Home/Nav";
-import ListItems from "../components/Detalle/Delle";
+import ListProducts from "../components/Detalle/Delle";
 
 const Detalle = () => {
   return (
-    <View>
+    <ScrollView>
       <Nav />
       <View style={{ marginLeft: 8, marginRight: 8, }}>
         <Text style={{
@@ -13,9 +13,9 @@ const Detalle = () => {
           margin: 10,
           fontSize: 22,
         }}>Agregados</Text>
-        <ListItems/>
+        <ListProducts/>
       </View>
-    </View>
+    </ScrollView>
     
   );
 };

@@ -4,12 +4,13 @@ export interface Category {
     description: string
     slug: string
 }
-export interface products {
-    id: string,
-    name: string,
-    cantidad: number,
-    categories: [string]
+export interface Products {
+    id: string
+    name: string
+    detalle: string
+    catidad: number
 }
+
 
 interface Metadata {
     nextPage: number
@@ -17,11 +18,10 @@ interface Metadata {
     perPage: number
 }
 export interface ListProductsResponse {
-    data: [products] | []
+    data: [Products] | []
     metadata: Metadata
 }
 
 export interface ListCategoriesResponse {
     data: [Category] | []
-    pagination: Metadata
 }

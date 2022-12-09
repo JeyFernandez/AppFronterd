@@ -68,7 +68,7 @@ export default FavoriteListItems;
 
 const SECTIONS = [
   {
-    horizontal: false,
+    horizontal: true,
     data: [
       {
         key: "1",
