@@ -1,14 +1,16 @@
 import React from "react";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import Nav from "../components/Home/Nav";
-import FavoriteListItems from "../components/Favorite/Favorites"; 
-const Favorite = () => {
+import CategoryList from "../components/categories/Category";
+import { Text } from "react-native";
+const Categories = () => {
   return (
     <SafeAreaView style={{ backgroundColor: "white", flex: 1 }}>
       <Nav/>
-      <FavoriteListItems/>
+      <Text>Categorias</Text>
+      <CategoryList/>
     </SafeAreaView>
   );
 };
 
-export default Favorite;
+export default Categories;

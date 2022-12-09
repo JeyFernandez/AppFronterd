@@ -10,6 +10,12 @@ export interface Products {
     detalle: string
     catidad: number
 }
+export interface Clients {
+    id: string
+    name: string
+    avatar: string
+
+}
 
 
 interface Metadata {
@@ -19,6 +25,10 @@ interface Metadata {
 }
 export interface ListProductsResponse {
     data: [Products] | []
+    metadata: Metadata
+}
+export interface ListClinetsResponse {
+    data: [Clients] | []
     metadata: Metadata
 }
 

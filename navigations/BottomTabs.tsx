@@ -7,7 +7,7 @@ import { Ionicons,Feather,AntDesign,MaterialIcons } from "@expo/vector-icons";
 import Home from "../screens/Home";
 import Profile from "../screens/Profile";
 import Detalle from "../screens/Detalles";
-import Favorite from "../screens/Favorite";
+import Categories from "../screens/Category";
 import Add from "../screens/Add";
 
 const Tab = createBottomTabNavigator();
@@ -23,7 +23,7 @@ const BottomTabs = () => {
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Detalle" component={Detalle} />
       <Tab.Screen name="MiddleIcon" component={Add} />
-      <Tab.Screen name="Favorite" component={Favorite} />
+      <Tab.Screen name="Categories" component={Categories} />
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
   );
@@ -84,18 +84,18 @@ const MyTabBar = ({ state, descriptors, navigation }: any) => {
             {index === 3 && (
               <View style={styles.icon}>
                 {isFocused ? (
-                  <MaterialIcons name="favorite" size={24} color={color} />
+                  <MaterialIcons name="category" size={24} color={color} />
                 ) : (
-                  <MaterialIcons name="favorite" size={24} color={color} />
+                  <MaterialIcons name="category" size={24} color={color} />
                 )}
               </View>
             )}    
             {index === 4 && (
               <View style={styles.icon}>
                 {isFocused ? (
-                  <Ionicons name="person" size={24} color={color} />
+                  <Ionicons name="people" size={24} color={color} />
                 ) : (
-                  <Ionicons name="person-outline" size={24} color={color} />
+                  <Ionicons name="people" size={24} color={color} />
                 )}
               </View>
             )}

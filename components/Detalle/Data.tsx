@@ -17,7 +17,7 @@ const ListItem = ({ item }: any) => {
         <View style={styles.info}>
           <Image
             source={{
-              uri: item.uri,
+              uri:"https://3.bp.blogspot.com/-lehgFiVpvy0/W0-yXvkcVaI/AAAAAAAIiuk/Rpj5vNJige86b0cX4Kxg0OMWkn-oUx8-gCLcBGAs/s1600/Cardboard_Box_Clip_Art_PNG_Image-1279.png"
             }}
             style={styles.itemPhoto}
           />
@@ -61,7 +61,6 @@ const ListItems = () => {
   return (
     <View>
       <FlatList
-      horizontal
         data={trending.data}
         renderItem={({ item }) => <ListItem item={item} />}
         showsHorizontalScrollIndicator={false}

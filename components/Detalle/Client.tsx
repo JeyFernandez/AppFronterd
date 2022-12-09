@@ -2,32 +2,36 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, Image, } from "react-native";
 import { Feather, MaterialIcons } from "@expo/vector-icons";
 
-import { HttpClient } from "../services/http.service";
-import { ListCategoriesResponse } from '../interfaces/index';
+import { HttpClient } from "../../services/http.service";
+import { ListClinetsResponse } from "../../interfaces";
 
 const client = new HttpClient();
 
 const ListItem = ({ item }: any) => {
   return (
     <View style={styles.container}>
-        <Text style={styles.category}> {item.name}</Text>
+        <Text style={styles.client}> {item.name}</Text>
     </View>
   );
 };
 
-const CategoryList = () => {
-  const [trending, setTrending] = useState<ListCategoriesResponse>({
+const ClientList = () => {
+  const [trending, setTrending] = useState<ListClinetsResponse>({
     data: [],
-
+    metadata:{
+      nextPage: 1,
+      currentPage: 1,
+      perPage: 1,
+    },
   });
 
-  const getTrendingCategory = async () => {
-    const response = await client.get<ListCategoriesResponse>("categories");
+  const getTrendingClient = async () => {
+    const response = await client.get<ListClinetsResponse>("clients");
     setTrending(response);
   };
 
   useEffect(() => {
-    getTrendingCategory();
+    getTrendingClient();
   }, []);
 
   return (
@@ -42,12 +46,12 @@ const CategoryList = () => {
   );
 };
 
-export default CategoryList;
+export default ClientList;
 
 const styles = StyleSheet.create({
   container: {
   },
-  category: {
+  client: {
     fontWeight: "bold",
     color: '#28151D',
     fontSize: 20,

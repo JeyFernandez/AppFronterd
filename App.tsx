@@ -8,7 +8,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import {useFonts, Poppins_600SemiBold, Poppins_400Regular} from "@expo-google-fonts/poppins";
 import * as SplashScreen from "expo-splash-screen";
 import { useCallback, useEffect } from "react";
-// 
+
 export default function App() {
   const [fontsLoaded] = useFonts({
     Poppins_600SemiBold,
