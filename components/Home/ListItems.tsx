@@ -1,13 +1,20 @@
 import React from "react";
-import {StyleSheet, View} from "react-native";
+import { StyleSheet, View, Text, ScrollView, ScrollViewBase } from 'react-native';
 import Products from "./Data";
 import CategoryList from "../Category";
+import ClientList from "./Client";
 const ListItems = () => {
   return (
-    <View style={styles.container}>
-      <CategoryList/>
-      <Products/>
+    <ScrollView>
+       <View style={styles.container}>
+      <Text style={styles.title}>Productos</Text>
+      <Products />
+      <Text style={styles.title}>Categorias</Text>
+      <CategoryList />
+      <Text style={styles.title}>Clientes</Text>
+      <ClientList />
     </View>
+    </ScrollView>
   );
 };
 
@@ -24,5 +31,10 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#E7FFFF',
     flex: 1,
+  },
+  title:{
+    fontSize:25,
+    padding:12  ,
+    fontWeight:"bold",
   },
 });

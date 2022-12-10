@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View, FlatList, TouchableOpacity, Image, } from "react-native";
+import { StyleSheet, Text, View, FlatList, ScrollView, Image, } from "react-native";
 import { Feather, MaterialIcons } from "@expo/vector-icons";
 
 import { HttpClient } from "../../services/http.service";
-import { ListProductsResponse } from '../../interfaces/index';
+import { ListClinetsResponse } from "../../interfaces";
 
 const client = new HttpClient();
 
@@ -11,27 +11,18 @@ const ListItem = ({ item }: any) => {
   return (
     <View style={styles.shawdon}>
       <View style={styles.boxs}>
-        <Text style={styles.text}>{item.cantidad} Productos
-          <Feather name="box" size={22} color="#FF8700" />
+        <Text style={styles.text}>{item.name}
+
         </Text>
         <View style={styles.info}>
           <Image
             source={{
-              uri: item.image,
+              uri: item.avatar,
             }}
             style={styles.itemPhoto}
           />
           <View style={{ alignSelf: 'flex-end' }}>
-            <Text style={styles.name}> {item.name}</Text>
-            <Text style={styles.detalle}> {item.detalle}</Text>
-            <Text style={styles.date}>{item.categoria}
-              <MaterialIcons name="favorite-border" style={styles.favorite} />
-            </Text>
-            <TouchableOpacity>
-              <Text style={styles.btn}>
-                Ver mas <Feather name="arrow-right" />
-              </Text>
-            </TouchableOpacity>
+            <Text style={styles.name}> {item.bibliografia}</Text>
           </View>
         </View>
       </View>
@@ -39,39 +30,41 @@ const ListItem = ({ item }: any) => {
   );
 };
 
-const ListItems = () => {
-  const [trending, setTrending] = useState<ListProductsResponse>({
+const ClientList = () => {
+  const [trending, setTrending] = useState<ListClinetsResponse>({
     data: [],
     metadata:{
-        nextPage: 1,
-        currentPage: 1,
-        perPage: 1,
-      },
+      nextPage: 1,
+      currentPage: 1,
+      perPage: 1,
+    },
   });
 
-  const getTrending = async () => {
-    const response = await client.get<ListProductsResponse>("products");
+  const getTrendingClient = async () => {
+    const response = await client.get<ListClinetsResponse>("clients");
     setTrending(response);
   };
 
   useEffect(() => {
-    getTrending();
+    getTrendingClient();
   }, []);
 
   return (
-    <View>
+    <ScrollView>
       <FlatList
+      horizontal
         data={trending.data}
         renderItem={({ item }) => <ListItem item={item} />}
         showsHorizontalScrollIndicator={false}
       />
-    </View>
+    </ScrollView>
   );
 };
 
-export default ListItems;
+export default ClientList;
 
 const styles = StyleSheet.create({
+
   shawdon: {
     shadowColor: "#000",
     shadowOpacity: 0.27,
@@ -96,11 +89,6 @@ const styles = StyleSheet.create({
     marginLeft: 12,
     paddingBottom: 10
   },
-  date: {
-    color: '#28151D',
-    paddingTop: 10,
-    fontSize: 40,
-  },
   name: {
     color: '#28151D',
     paddingTop: 10,
@@ -118,17 +106,5 @@ const styles = StyleSheet.create({
   detalle: {
     fontSize: 20,
     color: '#757575',
-  },
-  favorite: {
-    color: '#8A8A8A',
-    fontSize: 30,
-    alignSelf: 'flex-end',
-  },
-  btn: {
-    backgroundColor: '#4885FF',
-    padding: 8,
-    color: '#fff',
-    borderRadius: 8,
-    alignSelf: 'flex-end',
   },
 });

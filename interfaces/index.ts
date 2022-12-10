@@ -7,17 +7,17 @@ export interface Category {
 export interface Products {
     id: string
     name: string
+    Image: string
     detalle: string
     catidad: number
 }
 export interface Clients {
     id: string
     name: string
+    bibliografia: string
     avatar: string
 
 }
-
-
 interface Metadata {
     nextPage: number
     currentPage: number
